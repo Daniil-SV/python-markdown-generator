@@ -2,8 +2,6 @@ import tempfile
 from pathlib import Path
 import logging
 
-# import os
-from os import linesep
 from typing import List
 from html import escape
 from string import punctuation
@@ -26,6 +24,7 @@ from .config.conf import (
 
 # from standardizer.markdown.config.log import logger
 
+linesep = "\n"
 
 class MarkdownGenerator:
     """Class for generating GitLab or GitHub flavored Markdown."""
