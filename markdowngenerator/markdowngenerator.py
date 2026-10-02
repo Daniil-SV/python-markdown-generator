@@ -54,6 +54,7 @@ class MarkdownGenerator:
         enable_write=True,
         enable_TOC=True,
         logger=None,
+        encoding=None
     ):
         """
         Constructor method for MarkdownGenerator
@@ -128,6 +129,8 @@ class MarkdownGenerator:
 
         # Directory for tmp files, currently not in use.
         self.tmp_dir = tmp_dir
+        
+        self.encoding = encoding
 
     def __enter__(self):
         """
@@ -145,7 +148,7 @@ class MarkdownGenerator:
             self.filename.joinpath(DEFAULT_FILE_LOCATION, ".md")
             self.default_filename_on_use = True
         if not self.document:
-            self.document = open(f"{self.filename}", "w+")
+            self.document = open(f"{self.filename}", "w+", encoding=self.encoding)
             current_tmp_dir = tempfile.gettempdir()
             self.tmp_dir = tempfile.TemporaryDirectory(dir=current_tmp_dir)
 
